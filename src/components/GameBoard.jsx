@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
-import beep from "../sounds/beep.mp3";
-import errorSound from "../sounds/error.mp3";
-import successSound from "../sounds/success.mp3";
+// import beep from "../../public/sounds/beep.mp3";
+// import errorSound from "../../public/sounds/error.mp3";
+// import successSound from "../../public/sounds/success.mp3";
+
 
 function GameBoard({ difficulty, mode, theme, handleGameOver }) {
+  
   const [sequence, setSequence] = useState([]);
   const [playerSequence, setPlayerSequence] = useState([]);
   const [activeButton, setActiveButton] = useState(null);
@@ -14,9 +16,9 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
   const [timer, setTimer] = useState(null);
   const [timeLeft, setTimeLeft] = useState(0);
 
-  const [playBeep] = useSound(beep, { volume: 1 });
-  const [playError] = useSound(errorSound, { volume: 1 });
-  const [playSuccess] = useSound(successSound, { volume: 1 });
+  const [playBeep] = useSound("/sounds/beep.mp3");
+  const [playError] = useSound("/sounds/error.mp3");
+  const [playSuccess] = useSound("/sounds/success.mp3");
 
   const buttons = ["red", "blue", "green", "yellow"];
 
@@ -58,6 +60,20 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
       }, (index + 1) * getSpeedByDifficulty() + 500);
     });
   };
+
+  function getSpeedByDifficulty(difficulty) {
+    switch (difficulty) {
+      case "principiante":
+        return 1000; 
+      case "intermedio":
+        return 700;  
+      case "experto":
+        return 400;  
+      default:
+        return 1000;
+    }
+  }
+  
 
   const handlePlayerInput = (color) => {
     if (!isPlayerTurn) return;
