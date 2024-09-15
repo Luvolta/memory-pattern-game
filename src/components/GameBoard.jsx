@@ -10,8 +10,11 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
   const [timer, setTimer] = useState(null);                    // Intervalo del temporizador
   const [timeLeft, setTimeLeft] = useState(0);                 // Tiempo restante en el modo cronómetro
 
-  // Cargar sonidos
-  const [playBeep] = useSound("/sounds/beep.mp3");
+  // Cargar sonidos para cada color
+  const [playBeepRed] = useSound("/sounds/red.mp3");
+  const [playBeepBlue] = useSound("/sounds/blue.mp3");
+  const [playBeepGreen] = useSound("/sounds/green.mp3");
+  const [playBeepYellow] = useSound("/sounds/yellow.mp3");
   const [playError] = useSound("/sounds/error.mp3");
   const [playSuccess] = useSound("/sounds/success.mp3");
 
@@ -19,7 +22,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
 
   // Iniciar una nueva ronda al cargar el componente
   useEffect(() => {
-    startNewRound();
+      startNewRound();
   }, []);
 
   // Inicia una nueva ronda, añadiendo un nuevo color a la secuencia
@@ -50,7 +53,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
     sequenceToPlay.forEach((color, index) => {
       setTimeout(() => {
         setActiveButton(color); // Muestra el botón como activo
-        playBeep();             // Reproduce sonido beep
+        playSound(color);       // Reproduce sonido correspondiente al color
       }, (index + 1) * getSpeedByDifficulty(difficulty)); // Tiempo según dificultad
 
       setTimeout(() => {
@@ -60,6 +63,26 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
         }
       }, (index + 1) * getSpeedByDifficulty(difficulty) + 500); // Espera antes de desactivar
     });
+  };
+
+  // Reproduce el sonido correspondiente al color
+  const playSound = (color) => {
+    switch (color) {
+      case "red":
+        playBeepRed();
+        break;
+      case "blue":
+        playBeepBlue();
+        break;
+      case "green":
+        playBeepGreen();
+        break;
+      case "yellow":
+        playBeepYellow();
+        break;
+      default:
+        break;
+    }
   };
 
   // Obtiene la velocidad de la secuencia según la dificultad
