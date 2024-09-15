@@ -8,7 +8,7 @@ function App() {
   const [difficulty, setDifficulty] = useState("principiante");
   const [mode, setMode] = useState("clasico");
   const [theme, setTheme] = useState("tema1");
-  
+  const [isDarkMode, setIsDarkMode] = useState(true); // Nuevo estado para modo oscuro
 
   const handleStartGame = () => {
     setGameStarted(true);
@@ -18,8 +18,15 @@ function App() {
     setGameStarted(false);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode); // Alternar entre claro y oscuro
+  };
+
   return (
-    <div className={`App ${theme}`}>
+    <div className={`App ${theme} ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Modo Claro" : "Modo Oscuro"}
+      </button>
       {!gameStarted ? (
         <GameMenu 
           setDifficulty={setDifficulty} 

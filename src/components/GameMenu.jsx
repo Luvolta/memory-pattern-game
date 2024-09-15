@@ -15,10 +15,14 @@ function GameMenu({ setDifficulty, setMode, setTheme, handleStartGame }) {
   return (
     <div className="game-menu">
       <h1>Patrón de Memoria</h1>
-      
+
       <div className="menu-option">
         <label htmlFor="difficulty">Dificultad:</label>
-        <select id="difficulty" value={selectedDifficulty} onChange={(e) => setSelectedDifficulty(e.target.value)}>
+        <select
+          id="difficulty"
+          value={selectedDifficulty}
+          onChange={(e) => setSelectedDifficulty(e.target.value)}
+        >
           <option value="principiante">Principiante</option>
           <option value="intermedio">Intermedio</option>
           <option value="experto">Experto</option>
@@ -27,19 +31,27 @@ function GameMenu({ setDifficulty, setMode, setTheme, handleStartGame }) {
 
       <div className="menu-option">
         <label htmlFor="mode">Modo:</label>
-        <select id="mode" value={selectedMode} onChange={(e) => setSelectedMode(e.target.value)}>
+        <select
+          id="mode"
+          value={selectedMode}
+          onChange={(e) => setSelectedMode(e.target.value)}
+        >
           <option value="clasico">Clásico</option>
           <option value="cronometro">Cronómetro</option>
-          <option value="confuso">Confuso</option>
+          <option value="inverso">Inverso</option>
         </select>
       </div>
 
       <div className="menu-option">
         <label htmlFor="theme">Tema:</label>
-        <select id="theme" value={selectedTheme} onChange={(e) => setSelectedTheme(e.target.value)}>
-          <option value="tema1">Tema 1</option>
-          <option value="tema2">Tema 2</option>
-          <option value="tema3">Tema 3</option>
+        <select
+          id="theme"
+          value={selectedTheme}
+          onChange={(e) => setSelectedTheme(e.target.value)}
+        >
+          <option value="theme-clasico">Tema Clásico</option>
+          <option value="theme-neon">Tema Neón</option>
+          <option value="theme-blackAndWhite">Tema Blanco y Negro</option>
         </select>
       </div>
 

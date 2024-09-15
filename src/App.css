@@ -1,4 +1,3 @@
-/* App.css */
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -35,7 +34,6 @@ button:hover {
 }
 
 
-/* App.css */
 .color-button {
   width: 100px;
   height: 100px;
@@ -81,57 +79,114 @@ button:hover {
   margin-bottom: 10px;
 }
 
-/* App.css */
 
-/* App.css */
 
-/* Estilos para el tema celeste */
-.theme-celeste .color-button.red {
-  background-color: #ff4d4d; /* Rojo claro */
-}
-
-.theme-celeste .color-button.blue {
-  background-color: #4d88ff; /* Azul claro */
-}
-
-.theme-celeste .color-button.green {
-  background-color: #4dff4d; /* Verde claro */
-}
-
-.theme-celeste .color-button.yellow {
-  background-color: #ffff4d; /* Amarillo claro */
-}
-
-/* Estilos para el tema rojo */
-.theme-rojo .color-button.red {
-  background-color: #ff0000; /* Rojo */
-}
-
-.theme-rojo .color-button.blue {
-  background-color: #0000ff; /* Azul */
-}
-
-.theme-rojo .color-button.green {
-  background-color: #00ff00; /* Verde */
-}
-
-.theme-rojo .color-button.yellow {
-  background-color: #ffff00; /* Amarillo */
-}
-
-/* Estilos para el tema azul */
-.theme-azul .color-button.red {
+/* Estilos para el tema clásico */
+.theme-clasico .color-button.red {
   background-color: #cc0000; /* Rojo oscuro */
 }
 
-.theme-azul .color-button.blue {
+.theme-clasico .color-button.blue {
   background-color: #0000cc; /* Azul oscuro */
 }
 
-.theme-azul .color-button.green {
+.theme-clasico .color-button.green {
   background-color: #009900; /* Verde oscuro */
 }
 
-.theme-azul .color-button.yellow {
+.theme-clasico .color-button.yellow {
   background-color: #cccc00; /* Amarillo oscuro */
+}
+
+/* Estilos para el tema neón */
+.theme-neon .color-button.red {
+  background-color: #ff004d; /* Rojo neón */
+  box-shadow: 0 0 10px #ff004d; /* Efecto neón */
+}
+
+.theme-neon .color-button.blue {
+  background-color: #004dff; /* Azul neón */
+  box-shadow: 0 0 10px #004dff; /* Efecto neón */
+}
+
+.theme-neon .color-button.green {
+  background-color: #00ff00; /* Verde neón */
+  box-shadow: 0 0 10px #00ff00; /* Efecto neón */
+}
+
+.theme-neon .color-button.yellow {
+  background-color: #ffff33; /* Amarillo neón */
+  box-shadow: 0 0 10px #ffff33; /* Efecto neón */
+}
+
+.theme-neon .game-board h2, .theme-neon .game-board h3 {
+  color: #00ffcc; /* Neón azul claro */
+}
+
+/* Estilos para el tema blanco y negro */
+/* Estilos para el tema blanco y negro */
+.theme-blackAndWhite .color-button.red {
+  background-color: #ccc; /* Gris claro */
+  border: 2px solid #000; /* Borde negro */
+}
+
+.theme-blackAndWhite .color-button.blue {
+  background-color: #999; /* Gris medio */
+  border: 2px solid #000; /* Borde negro */
+}
+
+.theme-blackAndWhite .color-button.green {
+  background-color: #666; /* Gris oscuro */
+  border: 2px solid #000; /* Borde negro */
+}
+
+.theme-blackAndWhite .color-button.yellow {
+  background-color: #333; /* Gris muy oscuro */
+  border: 2px solid #000; /* Borde negro */
+}
+
+.theme-blackAndWhite .game-board h2, .theme-blackAndWhite .game-board h3 {
+  color: #000; /* Negro */
+}
+
+
+
+
+
+
+.button {
+  transition: transform 0.1s ease-in-out;
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+.button.active {
+  background-color: #ff0000;
+}
+
+/* App.css */
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s ease;
+}
+
+
+.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #121212;
 }

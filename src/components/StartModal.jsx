@@ -27,9 +27,9 @@ function StartModal({ onStartGame, onShowRank }) {
       <label>
         Tema:
         <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-          <option value="celeste">Celeste</option>
-          <option value="rojo">Rojo</option>
-          <option value="azul">Azul</option>
+          <option value="clasico">Celeste</option>
+          <option value="neon">Rojo</option>
+          <option value="blackAndWhite">Azul</option>
         </select>
       </label>
       <button onClick={() => onStartGame(difficulty, mode, theme)}>Iniciar Juego</button>
