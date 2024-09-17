@@ -44,21 +44,22 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
   }, [sequence]);
 
   const playSequence = () => {
-    sequence.forEach((color, index) => {
+    const sequenceToPlay = mode === "inverso" ? [...sequence].reverse() : sequence;
+
+    sequenceToPlay.forEach((color, index) => {
       setTimeout(() => {
         setActiveButton(color);
         playSound(color);
       }, (index + 1) * getSpeedByDifficulty(difficulty));
-  
+
       setTimeout(() => {
         setActiveButton(null);
-        if (index === sequence.length - 1) {
+        if (index === sequenceToPlay.length - 1) {
           setIsPlayerTurn(true);
         }
       }, (index + 1) * getSpeedByDifficulty(difficulty) + 500);
     });
   };
-  
 
   const playSound = (color) => {
     switch (color) {
@@ -94,30 +95,29 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
 
   const handlePlayerInput = (color) => {
     if (!isPlayerTurn) return;
-  
-    // Nueva secuencia del jugador
+
+    // Obtener la secuencia esperada
+    const expectedSequence = mode === "inverso" ? [...sequence].reverse() : sequence;
     const newPlayerSequence = [...playerSequence, color];
     setPlayerSequence(newPlayerSequence);
-  
+
     // Reproduce sonido y resalta el botón
     playSound(color);
     setActiveButton(color);
     setTimeout(() => setActiveButton(null), 300); // Duración del resalte
-  
+
     // Verificar la secuencia del jugador
-    const expectedSequence = mode === "inverso" ? sequence.slice().reverse() : sequence;
-  
     const isSequenceCorrect = newPlayerSequence.every((color, index) =>
       color === expectedSequence[index]
     );
-  
+
     if (!isSequenceCorrect || newPlayerSequence.length > expectedSequence.length) {
       stopTimer();
       playError();
-      setShowModal(true); 
+      setShowModal(true); // Muestra el modal
       return;
     }
-  
+
     // Verificar si el jugador completó la secuencia
     if (newPlayerSequence.length === expectedSequence.length) {
       playSuccess();
@@ -125,8 +125,6 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
       setTimeout(startNewRound, 1000);
     }
   };
-  
-  
 
   const startTimer = () => {
     setTimeLeft(getTimeLimitByDifficulty());
@@ -134,7 +132,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
       setTimeLeft((prevTime) => {
         if (prevTime <= 0) {
           clearInterval(newTimer);
-          setShowModal(true); 
+          setShowModal(true); // Muestra el modal cuando el tiempo se acaba
           return 0;
         }
         return prevTime - 1;

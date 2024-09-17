@@ -20,8 +20,70 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  background-color: #f7f7f7; 
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 50px auto;
+  font-family: 'Arial', sans-serif;
 }
+
+.game-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.menu-option label {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.menu-option select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.menu-option select:focus {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.start-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: rgba(0, 123, 255, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.start-button:active {
+  background-color: rgba(0, 123, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 .menu-option {
   margin: 10px 0;
@@ -48,8 +110,7 @@ button:hover {
 .color-button {
   width: 100px;
   height: 100px;
-  margin: 20px;
-  border-radius: 50%;
+  margin: 10px;
   border: none;
   cursor: pointer;
   opacity: 0.6;
@@ -62,18 +123,22 @@ button:hover {
 
 .color-button.red {
   background-color: red;
+  border-top-left-radius: 50%;
 }
 
 .color-button.blue {
   background-color: blue;
+  border-top-right-radius: 50%;
 }
 
 .color-button.green {
   background-color: green;
+  border-bottom-left-radius: 50%;
 }
 
 .color-button.yellow {
   background-color: yellow;
+  border-bottom-right-radius: 50%;
 }
 
 .buttons {
@@ -91,77 +156,74 @@ button:hover {
 }
 
 
-/* Estilos para el tema clásico */
 .theme-clasico .color-button.red {
-  background-color: #cc0000; /* Rojo oscuro */
+  background-color: #cc0000; 
 }
 
 .theme-clasico .color-button.blue {
-  background-color: #0000cc; /* Azul oscuro */
+  background-color: #0000cc; 
 }
 
 .theme-clasico .color-button.green {
-  background-color: #009900; /* Verde oscuro */
+  background-color: #009900; 
 }
 
 .theme-clasico .color-button.yellow {
-  background-color: #cccc00; /* Amarillo oscuro */
+  background-color: #cccc00; 
 }
 
-/* Estilos para el tema neón */
 .theme-neon .color-button.red {
-  background-color: #ff004d; /* Rojo neón */
-  box-shadow: 0 0 10px #ff004d; /* Efecto neón */
+  background-color: #ff004d; 
+  box-shadow: 0 0 10px #ff004d; 
 }
 
 .theme-neon .color-button.blue {
-  background-color: #004dff; /* Azul neón */
-  box-shadow: 0 0 10px #004dff; /* Efecto neón */
+  background-color: #004dff; 
+  box-shadow: 0 0 10px #004dff; 
 }
 
 .theme-neon .color-button.green {
-  background-color: #00ff00; /* Verde neón */
-  box-shadow: 0 0 10px #00ff00; /* Efecto neón */
+  background-color: #00ff00; 
+  box-shadow: 0 0 10px #00ff00; 
 }
 
 .theme-neon .color-button.yellow {
-  background-color: #ffff33; /* Amarillo neón */
-  box-shadow: 0 0 10px #ffff33; /* Efecto neón */
+  background-color: #ffff33; 
+  box-shadow: 0 0 10px #ffff33; 
 }
 
 .theme-neon .game-board h2, .theme-neon .game-board h3 {
-  color: #00ffcc; /* Neón azul claro */
+  color: #00ffcc; 
 }
 
-/* Estilos para el tema blanco y negro */
-/* Estilos para el tema blanco y negro */
 .theme-blackAndWhite .color-button.red {
-  background-color: #ccc; /* Gris claro */
-  border: 2px solid #000; /* Borde negro */
+  background-color: #ccc; 
+  border: 2px solid #000; 
 }
 
 .theme-blackAndWhite .color-button.blue {
-  background-color: #999; /* Gris medio */
-  border: 2px solid #000; /* Borde negro */
+  background-color: #999; 
+  border: 2px solid #000; 
 }
 
 .theme-blackAndWhite .color-button.green {
-  background-color: #666; /* Gris oscuro */
-  border: 2px solid #000; /* Borde negro */
+  background-color: #666; 
+  border: 2px solid #000; 
 }
 
 .theme-blackAndWhite .color-button.yellow {
-  background-color: #333; /* Gris muy oscuro */
-  border: 2px solid #000; /* Borde negro */
+  background-color: #333; 
+  border: 2px solid #000; 
 }
 
 .theme-blackAndWhite .game-board h2, .theme-blackAndWhite .game-board h3 {
-  color: #000; /* Negro */
+  color: #000; 
 }
 
 .button {
   transition: transform 0.1s ease-in-out;
 }
+
 
 .button:active {
   transform: scale(0.9);
@@ -171,20 +233,6 @@ button:hover {
   background-color: #ff0000;
 }
 
-/* App.css */
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background-color: #ddd;
-}
-
-.progress {
-  height: 100%;
-  background-color: #4caf50;
-  transition: width 0.5s ease;
-}
-
 
 .dark-mode {
   background-color: #121212;
@@ -192,6 +240,64 @@ button:hover {
 }
 
 .light-mode {
-  background-color: #fff;
+  background-color: #f5f5f5;
   color: #121212;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  backdrop-filter: blur(65px); 
+}
+
+.modal-content {
+  color: #00aaff ;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center; 
+  align-items: center;     
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 300px;
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+
+
+.modal-content p{
+  margin-bottom: 20px;
+}
+.modal-content.light {
+  background: #fff;
+  text-shadow:
+  -1px -1px 0 #000,   
+   1px -1px 0 #000,   
+  -1px  1px 0 #000,  
+   1px  1px 0 #000; 
+}
+
+.modal-content.dark  {
+  background: #333;
+  text-shadow:
+  -1px -1px 0 #ffffff,   
+   1px -1px 0 #ffffff,   
+  -1px  1px 0 #ffffff,  
+   1px  1px 0 #ffffff; 
+}
+
+.modal-overlay.light {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.modal-overlay.dark {
+  background: rgba(0, 0, 0, 0.7);
+}
+
