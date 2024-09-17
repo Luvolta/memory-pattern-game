@@ -25,6 +25,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
       startNewRound();
   }, []);
 
+  
   // Inicia una nueva ronda, añadiendo un nuevo color a la secuencia
   const startNewRound = () => {
     const newColor = buttons[Math.floor(Math.random() * buttons.length)];
@@ -39,31 +40,34 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
     }
   };
 
-  // Reproduce la secuencia del juego
   useEffect(() => {
-    if (!isPlayerTurn) {
-      playSequence();
+    if (sequence.length > 0) {
+      playSequence(); // Reproduce la secuencia siempre que cambie
     }
   }, [sequence]);
+
 
   // Lógica para reproducir la secuencia del juego
   const playSequence = () => {
     const sequenceToPlay = mode === "inverso" ? [...sequence].reverse() : sequence;
-
+  
+    // Recorremos la secuencia para reproducir los sonidos y activar los botones
     sequenceToPlay.forEach((color, index) => {
       setTimeout(() => {
-        setActiveButton(color); // Muestra el botón como activo
-        playSound(color);       // Reproduce sonido correspondiente al color
-      }, (index + 1) * getSpeedByDifficulty(difficulty)); // Tiempo según dificultad
-
+        setActiveButton(color); // Activa visualmente el botón
+        playSound(color);       // Reproduce sonido del color
+      }, (index + 1) * getSpeedByDifficulty(difficulty)); // Controla el tiempo de cada paso
+  
+      // Desactiva el botón visualmente y habilita el turno del jugador al final
       setTimeout(() => {
-        setActiveButton(null);  // Desactiva el botón
+        setActiveButton(null);
         if (index === sequenceToPlay.length - 1) {
-          setIsPlayerTurn(true); // Habilita el turno del jugador al final de la secuencia
+          setIsPlayerTurn(true); // Habilita el turno del jugador al finalizar la secuencia
         }
-      }, (index + 1) * getSpeedByDifficulty(difficulty) + 500); // Espera antes de desactivar
+      }, (index + 1) * getSpeedByDifficulty(difficulty) + 500); // Agrega un retardo antes de desactivar
     });
   };
+  
 
   // Reproduce el sonido correspondiente al color
   const playSound = (color) => {
@@ -102,19 +106,25 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
   // Maneja la entrada del jugador
   const handlePlayerInput = (color) => {
     if (!isPlayerTurn) return; // Ignorar si no es el turno del jugador
-
-    const expectedSequence = mode === "inverso" ? [...sequence].reverse() : sequence;
+  
     const newPlayerSequence = [...playerSequence, color]; // Actualiza la secuencia del jugador
     setPlayerSequence(newPlayerSequence);
-
+  
+    const currentStep = newPlayerSequence.length - 1; // Índice actual en la secuencia del jugador
+  
+    // Si estamos en modo inverso, comparamos la secuencia invertida
+    const expectedColor = mode === "inverso"
+      ? sequence[currentStep]  // Comparar con la secuencia normal (el jugador ingresa en orden inverso)
+      : sequence[currentStep]; // Comparar en orden normal
+  
     // Si la entrada del jugador no coincide con la secuencia del juego, se pierde
-    if (expectedSequence[newPlayerSequence.length - 1] !== color) {
+    if (expectedColor !== color) {
       stopTimer();  // Detiene el temporizador
       playError();  // Reproduce sonido de error
       handleGameOver();  // Maneja la lógica de fin del juego
       return;
     }
-
+  
     // Si el jugador completa correctamente la secuencia
     if (newPlayerSequence.length === sequence.length) {
       playSuccess();  // Reproduce sonido de éxito
@@ -122,6 +132,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
       setTimeout(startNewRound, 1000); // Inicia la siguiente ronda después de un segundo
     }
   };
+  
 
   // Inicia el temporizador (modo cronómetro)
   const startTimer = () => {
