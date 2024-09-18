@@ -43,12 +43,10 @@ memory-pattern-game/
 │   │   ├── red.mp3
 │   │   ├── succes.mp3
 │   │   ├── yellow.mp3
-│   │   └── vite.svg
 ├── src/
 │   ├── assets/
 │   │   └── simonsSays.png
 │   ├── components/
-│   │   ├── asas.jsx
 │   │   ├── GameBoard.jsx
 │   │   ├── GameMenu.jsx
 │   │   ├── GameOverModal.jsx
