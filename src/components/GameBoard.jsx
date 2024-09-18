@@ -17,7 +17,7 @@ function GameBoard({ difficulty, mode, theme, handleGameOver }) {
   const [playBeepGreen] = useSound("/sounds/green.mp3");
   const [playBeepYellow] = useSound("/sounds/yellow.mp3");
   const [playError] = useSound("/sounds/error.mp3");
-  const [playSuccess] = useSound("/sounds/success.mp3");
+  const [playSuccess] = useSound("/sounds/succes.mp3");
 
   const buttons = ["red", "blue", "green", "yellow"];
 
